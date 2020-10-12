@@ -16,7 +16,7 @@ type Developer struct {
 }
 
 func (d Developer) IsBusy() bool {
-	return d.Task.Status != None
+	return d.Task.Status == Pending
 }
 
 type Seniority int

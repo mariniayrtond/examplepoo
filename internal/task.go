@@ -19,5 +19,5 @@ const (
 )
 
 func (s TaskStatus) String() string {
-	return [...]string{"completed", "pending", "cancelled", "none"}[s]
+	return [...]string{"none", "pending", "cancelled", "completed"}[s]
 }
