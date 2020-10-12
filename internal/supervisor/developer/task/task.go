@@ -9,13 +9,17 @@ type Task struct {
 	Status    Status
 }
 
+type Publisher interface {
+	Publish(ownerId string, t Task) error
+}
+
 type Status int
 
 const (
-	Completed Status = iota
-	Pending
-	Cancelled
-	None
+	StatusNone Status = iota
+	StatusPending
+	StatusCancelled
+	StatusComplete
 )
 
 func (s Status) String() string {

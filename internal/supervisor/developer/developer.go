@@ -1,14 +1,15 @@
 package developer
 
 import (
+	"fmt"
 	"users_example/internal/supervisor/developer/task"
 )
 
 type Repository interface {
-	Add(d *Developer) error
+	Save(d *Developer) error
 	Get(id string) (*Developer, error)
-	Update(id string, d *Developer) error
 	Delete(id string) error
+	SearchByStatus(status task.Status) ([]Developer, error)
 }
 
 type Developer struct {
@@ -20,10 +21,25 @@ type Developer struct {
 }
 
 func (d Developer) IsBusy() bool {
-	return d.Task.Status == task.Pending
+	return d.Task.Status == task.StatusPending
 }
 
 type Seniority int
+
+func SeniorityFromString(value string) (Seniority, error) {
+	switch value {
+	case "senior":
+		return Senior, nil
+	case "semi_senior":
+		return SemiSenior, nil
+	case "analyst":
+		return Analyst, nil
+	case "junior":
+		return Junior, nil
+	default:
+		return 0, fmt.Errorf("%s is not a valid seniority", value)
+	}
+}
 
 const (
 	Senior Seniority = iota
