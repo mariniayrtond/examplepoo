@@ -5,6 +5,6 @@ import (
 )
 
 type TaskManagement interface {
-	Schedule(id string, task task.Task) Error
-	Complete(id string, task task.Task) Error
+	Schedule(id string, task task.Task) error
+	Complete(id string, task task.Task) error
 }

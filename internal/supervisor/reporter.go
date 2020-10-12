@@ -5,5 +5,5 @@ import (
 )
 
 type LazyReporter interface {
-	LazyReport() (developer.Report, Error)
+	LazyReport() (developer.Report, error)
 }
