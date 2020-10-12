@@ -8,7 +8,7 @@ import (
 
 type Crud interface {
 	Create(d *developer.Developer) error
-	Read(id string) (Crud, error)
+	Read(id string) (*developer.Developer, error)
 	Update(d *developer.Developer) error
 	Delete(id string) error
 }
