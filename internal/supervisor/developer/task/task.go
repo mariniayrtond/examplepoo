@@ -1,4 +1,4 @@
-package internal
+package task
 
 import "time"
 
@@ -6,18 +6,18 @@ type Task struct {
 	Name      string
 	CreatedAt time.Time
 	UpdatedAt time.Time
-	Status    TaskStatus
+	Status    Status
 }
 
-type TaskStatus int
+type Status int
 
 const (
-	Completed TaskStatus = iota
+	Completed Status = iota
 	Pending
 	Cancelled
 	None
 )
 
-func (s TaskStatus) String() string {
+func (s Status) String() string {
 	return [...]string{"none", "pending", "cancelled", "completed"}[s]
 }
